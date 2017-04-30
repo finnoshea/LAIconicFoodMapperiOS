@@ -47,7 +47,7 @@
 		B60556BC1EA06A1D002A8148 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B67AF53F1EB0610B005774FD /* InitializeItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitializeItemData.swift; path = ../InitializeItemData.swift; sourceTree = "<group>"; };
 		B6A6F6631EB66A8A00599ED4 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
-		B6A6F6671EB6749800599ED4 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		B6A6F6671EB6749800599ED4 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		B6DC7ED61EA1AA49001837C0 /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
 		B6F7E3D51EA0793B00B771B6 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		B6F7E3D71EA07F7500B771B6 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -79,7 +79,6 @@
 				B60556A41EA06A1D002A8148 /* LAMagazineLocationMapper */,
 				B60556B91EA06A1D002A8148 /* LAMagazineLocationMapperTests */,
 				B60556A31EA06A1D002A8148 /* Products */,
-				B6A6F6661EB6747000599ED4 /* Git */,
 				CA56CE258DD9941722C3C529 /* Pods */,
 				D3121FE154D156F4837C777E /* Frameworks */,
 			);
@@ -108,6 +107,7 @@
 				B60556AE1EA06A1D002A8148 /* LaunchScreen.storyboard */,
 				B60556B11EA06A1D002A8148 /* Info.plist */,
 				B6A6F6631EB66A8A00599ED4 /* Keys.plist */,
+				B6A6F6671EB6749800599ED4 /* .gitignore */,
 			);
 			path = LAMagazineLocationMapper;
 			sourceTree = "<group>";
@@ -119,14 +119,6 @@
 				B60556BC1EA06A1D002A8148 /* Info.plist */,
 			);
 			path = LAMagazineLocationMapperTests;
-			sourceTree = "<group>";
-		};
-		B6A6F6661EB6747000599ED4 /* Git */ = {
-			isa = PBXGroup;
-			children = (
-				B6A6F6671EB6749800599ED4 /* .gitignore */,
-			);
-			name = Git;
 			sourceTree = "<group>";
 		};
 		CA56CE258DD9941722C3C529 /* Pods */ = {
