@@ -44,10 +44,6 @@ class ItemTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    private func blankFunction() {
-        // a blank function so I can commit to git
-    }
 
 }
 
