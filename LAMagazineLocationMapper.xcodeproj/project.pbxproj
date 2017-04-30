@@ -1,0 +1,518 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		32A919BFE93A8986A1F543B8 /* libPods-LAMagazineLocationMapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF972D047AD28242A02A9E64 /* libPods-LAMagazineLocationMapper.a */; };
+		B60556A61EA06A1D002A8148 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60556A51EA06A1D002A8148 /* AppDelegate.swift */; };
+		B60556A81EA06A1D002A8148 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60556A71EA06A1D002A8148 /* MapViewController.swift */; };
+		B60556AB1EA06A1D002A8148 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B60556A91EA06A1D002A8148 /* Main.storyboard */; };
+		B60556AD1EA06A1D002A8148 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B60556AC1EA06A1D002A8148 /* Assets.xcassets */; };
+		B60556B01EA06A1D002A8148 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B60556AE1EA06A1D002A8148 /* LaunchScreen.storyboard */; };
+		B60556BB1EA06A1D002A8148 /* LAMagazineLocationMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60556BA1EA06A1D002A8148 /* LAMagazineLocationMapperTests.swift */; };
+		B67AF5401EB0610B005774FD /* InitializeItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67AF53F1EB0610B005774FD /* InitializeItemData.swift */; };
+		B6DC7ED71EA1AA49001837C0 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DC7ED61EA1AA49001837C0 /* ItemTableViewController.swift */; };
+		B6F7E3D61EA0793B00B771B6 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F7E3D51EA0793B00B771B6 /* ItemTableViewCell.swift */; };
+		B6F7E3D81EA07F7500B771B6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F7E3D71EA07F7500B771B6 /* Item.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B60556B71EA06A1D002A8148 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B605569A1EA06A1D002A8148 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B60556A11EA06A1D002A8148;
+			remoteInfo = LAMagazineLocationMapper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16EF540EA5EC8A158C1966D9 /* Pods-LAMagazineLocationMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMagazineLocationMapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LAMagazineLocationMapper/Pods-LAMagazineLocationMapper.debug.xcconfig"; sourceTree = "<group>"; };
+		3B3EE7CCB3AED695D2EAD536 /* Pods-LAMagazineLocationMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMagazineLocationMapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-LAMagazineLocationMapper/Pods-LAMagazineLocationMapper.release.xcconfig"; sourceTree = "<group>"; };
+		B60556A21EA06A1D002A8148 /* LAMagazineLocationMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LAMagazineLocationMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B60556A51EA06A1D002A8148 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B60556A71EA06A1D002A8148 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B60556AA1EA06A1D002A8148 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B60556AC1EA06A1D002A8148 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B60556AF1EA06A1D002A8148 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B60556B11EA06A1D002A8148 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B60556B61EA06A1D002A8148 /* LAMagazineLocationMapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LAMagazineLocationMapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B60556BA1EA06A1D002A8148 /* LAMagazineLocationMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAMagazineLocationMapperTests.swift; sourceTree = "<group>"; };
+		B60556BC1EA06A1D002A8148 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B67AF53F1EB0610B005774FD /* InitializeItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitializeItemData.swift; path = ../InitializeItemData.swift; sourceTree = "<group>"; };
+		B6DC7ED61EA1AA49001837C0 /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
+		B6F7E3D51EA0793B00B771B6 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		B6F7E3D71EA07F7500B771B6 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		BF972D047AD28242A02A9E64 /* libPods-LAMagazineLocationMapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LAMagazineLocationMapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B605569F1EA06A1D002A8148 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32A919BFE93A8986A1F543B8 /* libPods-LAMagazineLocationMapper.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B60556B31EA06A1D002A8148 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B60556991EA06A1D002A8148 = {
+			isa = PBXGroup;
+			children = (
+				B60556A41EA06A1D002A8148 /* LAMagazineLocationMapper */,
+				B60556B91EA06A1D002A8148 /* LAMagazineLocationMapperTests */,
+				B60556A31EA06A1D002A8148 /* Products */,
+				CA56CE258DD9941722C3C529 /* Pods */,
+				D3121FE154D156F4837C777E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B60556A31EA06A1D002A8148 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B60556A21EA06A1D002A8148 /* LAMagazineLocationMapper.app */,
+				B60556B61EA06A1D002A8148 /* LAMagazineLocationMapperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B60556A41EA06A1D002A8148 /* LAMagazineLocationMapper */ = {
+			isa = PBXGroup;
+			children = (
+				B60556A51EA06A1D002A8148 /* AppDelegate.swift */,
+				B60556A71EA06A1D002A8148 /* MapViewController.swift */,
+				B6F7E3D51EA0793B00B771B6 /* ItemTableViewCell.swift */,
+				B6DC7ED61EA1AA49001837C0 /* ItemTableViewController.swift */,
+				B6F7E3D71EA07F7500B771B6 /* Item.swift */,
+				B60556A91EA06A1D002A8148 /* Main.storyboard */,
+				B67AF53F1EB0610B005774FD /* InitializeItemData.swift */,
+				B60556AC1EA06A1D002A8148 /* Assets.xcassets */,
+				B60556AE1EA06A1D002A8148 /* LaunchScreen.storyboard */,
+				B60556B11EA06A1D002A8148 /* Info.plist */,
+			);
+			path = LAMagazineLocationMapper;
+			sourceTree = "<group>";
+		};
+		B60556B91EA06A1D002A8148 /* LAMagazineLocationMapperTests */ = {
+			isa = PBXGroup;
+			children = (
+				B60556BA1EA06A1D002A8148 /* LAMagazineLocationMapperTests.swift */,
+				B60556BC1EA06A1D002A8148 /* Info.plist */,
+			);
+			path = LAMagazineLocationMapperTests;
+			sourceTree = "<group>";
+		};
+		CA56CE258DD9941722C3C529 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16EF540EA5EC8A158C1966D9 /* Pods-LAMagazineLocationMapper.debug.xcconfig */,
+				3B3EE7CCB3AED695D2EAD536 /* Pods-LAMagazineLocationMapper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D3121FE154D156F4837C777E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF972D047AD28242A02A9E64 /* libPods-LAMagazineLocationMapper.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B60556A11EA06A1D002A8148 /* LAMagazineLocationMapper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B60556BF1EA06A1D002A8148 /* Build configuration list for PBXNativeTarget "LAMagazineLocationMapper" */;
+			buildPhases = (
+				FCFE4FFB8BB0E2C844A6E593 /* [CP] Check Pods Manifest.lock */,
+				B605569E1EA06A1D002A8148 /* Sources */,
+				B605569F1EA06A1D002A8148 /* Frameworks */,
+				B60556A01EA06A1D002A8148 /* Resources */,
+				D0AB698A060483565A303641 /* [CP] Embed Pods Frameworks */,
+				9C4DC05AB60B0AE140C421A9 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LAMagazineLocationMapper;
+			productName = LAMagazineLocationMapper;
+			productReference = B60556A21EA06A1D002A8148 /* LAMagazineLocationMapper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B60556B51EA06A1D002A8148 /* LAMagazineLocationMapperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B60556C21EA06A1D002A8148 /* Build configuration list for PBXNativeTarget "LAMagazineLocationMapperTests" */;
+			buildPhases = (
+				B60556B21EA06A1D002A8148 /* Sources */,
+				B60556B31EA06A1D002A8148 /* Frameworks */,
+				B60556B41EA06A1D002A8148 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B60556B81EA06A1D002A8148 /* PBXTargetDependency */,
+			);
+			name = LAMagazineLocationMapperTests;
+			productName = LAMagazineLocationMapperTests;
+			productReference = B60556B61EA06A1D002A8148 /* LAMagazineLocationMapperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B605569A1EA06A1D002A8148 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Finn;
+				TargetAttributes = {
+					B60556A11EA06A1D002A8148 = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+					};
+					B60556B51EA06A1D002A8148 = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B60556A11EA06A1D002A8148;
+					};
+				};
+			};
+			buildConfigurationList = B605569D1EA06A1D002A8148 /* Build configuration list for PBXProject "LAMagazineLocationMapper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B60556991EA06A1D002A8148;
+			productRefGroup = B60556A31EA06A1D002A8148 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B60556A11EA06A1D002A8148 /* LAMagazineLocationMapper */,
+				B60556B51EA06A1D002A8148 /* LAMagazineLocationMapperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B60556A01EA06A1D002A8148 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B60556B01EA06A1D002A8148 /* LaunchScreen.storyboard in Resources */,
+				B60556AD1EA06A1D002A8148 /* Assets.xcassets in Resources */,
+				B60556AB1EA06A1D002A8148 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B60556B41EA06A1D002A8148 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9C4DC05AB60B0AE140C421A9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LAMagazineLocationMapper/Pods-LAMagazineLocationMapper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0AB698A060483565A303641 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LAMagazineLocationMapper/Pods-LAMagazineLocationMapper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCFE4FFB8BB0E2C844A6E593 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B605569E1EA06A1D002A8148 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6F7E3D61EA0793B00B771B6 /* ItemTableViewCell.swift in Sources */,
+				B60556A81EA06A1D002A8148 /* MapViewController.swift in Sources */,
+				B67AF5401EB0610B005774FD /* InitializeItemData.swift in Sources */,
+				B6F7E3D81EA07F7500B771B6 /* Item.swift in Sources */,
+				B6DC7ED71EA1AA49001837C0 /* ItemTableViewController.swift in Sources */,
+				B60556A61EA06A1D002A8148 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B60556B21EA06A1D002A8148 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B60556BB1EA06A1D002A8148 /* LAMagazineLocationMapperTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B60556B81EA06A1D002A8148 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B60556A11EA06A1D002A8148 /* LAMagazineLocationMapper */;
+			targetProxy = B60556B71EA06A1D002A8148 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B60556A91EA06A1D002A8148 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B60556AA1EA06A1D002A8148 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B60556AE1EA06A1D002A8148 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B60556AF1EA06A1D002A8148 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B60556BD1EA06A1D002A8148 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B60556BE1EA06A1D002A8148 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B60556C01EA06A1D002A8148 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16EF540EA5EC8A158C1966D9 /* Pods-LAMagazineLocationMapper.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = LAMagazineLocationMapper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.LAMagazineLocationMapper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		B60556C11EA06A1D002A8148 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B3EE7CCB3AED695D2EAD536 /* Pods-LAMagazineLocationMapper.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = LAMagazineLocationMapper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.LAMagazineLocationMapper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		B60556C31EA06A1D002A8148 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LAMagazineLocationMapperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.LAMagazineLocationMapperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LAMagazineLocationMapper.app/LAMagazineLocationMapper";
+			};
+			name = Debug;
+		};
+		B60556C41EA06A1D002A8148 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LAMagazineLocationMapperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.LAMagazineLocationMapperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LAMagazineLocationMapper.app/LAMagazineLocationMapper";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B605569D1EA06A1D002A8148 /* Build configuration list for PBXProject "LAMagazineLocationMapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B60556BD1EA06A1D002A8148 /* Debug */,
+				B60556BE1EA06A1D002A8148 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B60556BF1EA06A1D002A8148 /* Build configuration list for PBXNativeTarget "LAMagazineLocationMapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B60556C01EA06A1D002A8148 /* Debug */,
+				B60556C11EA06A1D002A8148 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B60556C21EA06A1D002A8148 /* Build configuration list for PBXNativeTarget "LAMagazineLocationMapperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B60556C31EA06A1D002A8148 /* Debug */,
+				B60556C41EA06A1D002A8148 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B605569A1EA06A1D002A8148 /* Project object */;
+}
