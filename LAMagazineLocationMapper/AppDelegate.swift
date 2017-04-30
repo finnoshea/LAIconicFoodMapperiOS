@@ -13,12 +13,23 @@ import GoogleMaps
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var keys: NSDictionary?
+
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // Set the API key for Google Maps
-        GMSServices.provideAPIKey("AIzaSyDQVfO-ds6nbSXSLweh-byOWOG6BWEMYC8")
+        
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+            print("The key is \(keys!.value(forKey: "googleMapsAPI") ?? ""), right?")
+            GMSServices.provideAPIKey(keys!.value(forKey: "googleMapsAPI") as! String)
+        } else {
+            print("Failed to find the Keys.plist file.")
+        }
+        
+        
         return true
     }
 

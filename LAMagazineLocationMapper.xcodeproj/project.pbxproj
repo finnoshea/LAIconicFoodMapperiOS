@@ -15,6 +15,8 @@
 		B60556B01EA06A1D002A8148 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B60556AE1EA06A1D002A8148 /* LaunchScreen.storyboard */; };
 		B60556BB1EA06A1D002A8148 /* LAMagazineLocationMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60556BA1EA06A1D002A8148 /* LAMagazineLocationMapperTests.swift */; };
 		B67AF5401EB0610B005774FD /* InitializeItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67AF53F1EB0610B005774FD /* InitializeItemData.swift */; };
+		B6A6F6641EB66A8A00599ED4 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A6F6631EB66A8A00599ED4 /* Keys.plist */; };
+		B6A6F6681EB6749800599ED4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B6A6F6671EB6749800599ED4 /* .gitignore */; };
 		B6DC7ED71EA1AA49001837C0 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DC7ED61EA1AA49001837C0 /* ItemTableViewController.swift */; };
 		B6F7E3D61EA0793B00B771B6 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F7E3D51EA0793B00B771B6 /* ItemTableViewCell.swift */; };
 		B6F7E3D81EA07F7500B771B6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F7E3D71EA07F7500B771B6 /* Item.swift */; };
@@ -44,6 +46,8 @@
 		B60556BA1EA06A1D002A8148 /* LAMagazineLocationMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAMagazineLocationMapperTests.swift; sourceTree = "<group>"; };
 		B60556BC1EA06A1D002A8148 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B67AF53F1EB0610B005774FD /* InitializeItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitializeItemData.swift; path = ../InitializeItemData.swift; sourceTree = "<group>"; };
+		B6A6F6631EB66A8A00599ED4 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		B6A6F6671EB6749800599ED4 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B6DC7ED61EA1AA49001837C0 /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
 		B6F7E3D51EA0793B00B771B6 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		B6F7E3D71EA07F7500B771B6 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 				B60556A41EA06A1D002A8148 /* LAMagazineLocationMapper */,
 				B60556B91EA06A1D002A8148 /* LAMagazineLocationMapperTests */,
 				B60556A31EA06A1D002A8148 /* Products */,
+				B6A6F6661EB6747000599ED4 /* Git */,
 				CA56CE258DD9941722C3C529 /* Pods */,
 				D3121FE154D156F4837C777E /* Frameworks */,
 			);
@@ -102,6 +107,7 @@
 				B60556AC1EA06A1D002A8148 /* Assets.xcassets */,
 				B60556AE1EA06A1D002A8148 /* LaunchScreen.storyboard */,
 				B60556B11EA06A1D002A8148 /* Info.plist */,
+				B6A6F6631EB66A8A00599ED4 /* Keys.plist */,
 			);
 			path = LAMagazineLocationMapper;
 			sourceTree = "<group>";
@@ -113,6 +119,14 @@
 				B60556BC1EA06A1D002A8148 /* Info.plist */,
 			);
 			path = LAMagazineLocationMapperTests;
+			sourceTree = "<group>";
+		};
+		B6A6F6661EB6747000599ED4 /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				B6A6F6671EB6749800599ED4 /* .gitignore */,
+			);
+			name = Git;
 			sourceTree = "<group>";
 		};
 		CA56CE258DD9941722C3C529 /* Pods */ = {
@@ -218,6 +232,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6A6F6681EB6749800599ED4 /* .gitignore in Resources */,
+				B6A6F6641EB66A8A00599ED4 /* Keys.plist in Resources */,
 				B60556B01EA06A1D002A8148 /* LaunchScreen.storyboard in Resources */,
 				B60556AD1EA06A1D002A8148 /* Assets.xcassets in Resources */,
 				B60556AB1EA06A1D002A8148 /* Main.storyboard in Resources */,
