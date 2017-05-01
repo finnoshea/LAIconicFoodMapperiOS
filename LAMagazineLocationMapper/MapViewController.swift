@@ -12,57 +12,52 @@ import UIKit
 import GoogleMaps
 import os.log
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: Properties
     // an array of the items
     var items = [Item]()
-    var mapView: GMSMapView!
+    var locationManager = CLLocationManager()
+    lazy var mapView = GMSMapView()
     var markers = [GMSMarker]()
     // where the camera should start - uses default location
     var startCamera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 34.1,
                                                                   longitude: -118.3,
                                                                   zoom: 11)
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // Use this because it is called every time the view appears, not just when it is loaded like viewDidLoad
+        // Use this function because it is called every time the view appears, not just when it is loaded like viewDidLoad
         
         super.viewWillAppear(animated)
+    
+        // load the items list from memory or, failing that, the default items
+        safeLoadItems()
         
         // create the map view property
-        let mapView = GMSMapView(frame: .zero)
-        
-        // try to load the users location
-        // The myLocation attribute of the mapView may be nil
+        mapView = GMSMapView(frame: .zero)
+        // Allow tracking of the user
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
-
-        if let myLocation = mapView.myLocation {
-            print("User's location: \(myLocation)")
-            startCamera = GMSCameraPosition.camera(withTarget:myLocation.coordinate,
-                                                   zoom: 11)
-        } else {
-            // otherwise use the default location
-            print("User's location is unknown")
-        }
-        
-        
-        // generate the map view
-        mapView.camera = startCamera
-        view = mapView
-        
-        // load the items from memory or, failing that, the default items
-        safeLoadItems()
         
         // put the markers on the map
         mapMarkers(for: mapView)
-    
+        
+        // Find the user location
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        
+        // generate the map view
+        view = mapView
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -171,53 +166,20 @@ class MapViewController: UIViewController {
         }
     }
 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation = locations.last
+        //let center = CLLocationCoordinate2D(latitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude)
+        
+        let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude,
+                                              longitude: userLocation!.coordinate.longitude, zoom: 13.0)
+        mapView.camera = camera // update the camera position only
+
+        self.view = mapView  // show the map
+        
+        locationManager.stopUpdatingLocation()
+    }
 
 }
-
-/*
-extension MapViewController: CLLocationManagerDelegate
-{
-    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
-    {
-        switch status
-        {
-        case .authorizedAlways:
-            print("Location AuthorizedAlways")
-            mapView.isMyLocationEnabled = true
-            locationManager.startUpdatingLocation()
-            
-        case .authorizedWhenInUse:
-            print("Location AuthorizedWhenInUse")
-            mapView.isMyLocationEnabled = true
-            locationManager.startUpdatingLocation()
-            
-        case .denied:
-            print("Location Denied")
-            mapView.isMyLocationEnabled = false
-            locationManager.stopUpdatingLocation()
-            
-        case .notDetermined:
-            print("Location NotDetermined")
-            mapView.isMyLocationEnabled = false
-            locationManager.stopUpdatingLocation()
-            
-        case .restricted:
-            print("Location Restricted")
-            mapView.isMyLocationEnabled = false
-            locationManager.stopUpdatingLocation()
-        }
-    }
-    
-    private func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
-        if locations.count > 0
-        {
-            mapView.camera = GMSCameraPosition.camera(withTarget: (locations.last?.coordinate)!, zoom: 10.0)
-            mapView.settings.myLocationButton = true
-        }
-    }
-}
-*/
 
 
 
