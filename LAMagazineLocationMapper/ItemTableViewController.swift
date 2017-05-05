@@ -18,11 +18,14 @@ class ItemTableViewController: UITableViewController {
     //MARK: Properties
     
     var items = [Item]()
+    @IBOutlet var theTableView: UITableView!
     
     //MARK: Override functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        theTableView.dataSource = self
         
         // use a helper function to load the map locations
         safeLoadItems()
@@ -121,6 +124,8 @@ class ItemTableViewController: UITableViewController {
     }
     */
     
+    //MARK: Actions for Tapping the labels
+    
     
     //MARK: Private Methods
     
@@ -171,7 +176,7 @@ class ItemTableViewController: UITableViewController {
 }
 
 // MARK: Extensions - used so the main class doesn't have a ton of conformation items
-extension ItemTableViewController: VisitedDelegate {
+extension ItemTableViewController: ButtonDelegate {
     // See http://stackoverflow.com/questions/39566065/uiswitch-in-accessory-view-of-a-tableviewcell-passing-a-parameter-with-the-sele
     
     func didFlipVisitSwitch(for cell: ItemTableViewCell, value: Bool) {
@@ -185,6 +190,14 @@ extension ItemTableViewController: VisitedDelegate {
             } else {
                 os_log("Visit switch set to OFF.", log: OSLog.default, type: .error)
             }
+        }
+        
+    }
+    
+    func didTapLocationLabel(for cell: ItemTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            print("Tapped cell number \(indexPath.row)")
+            
         }
         
     }
