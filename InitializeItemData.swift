@@ -21,7 +21,7 @@ func initializeItemData() -> [Item] {
     // 3
     itemsList.append(Item(name: "Golden Deli", number: 3, item: "Pho", visited: false, coords: ["34.1028567,-118.1117593"]))
     
-    // 4 -  this one is made up
+    // 4
     itemsList.append(Item(name: "Greenblatt's Deli", number: 4, item: "Chicken Noodle Soup", visited: false, coords: ["34.0981571,-118.3646505"]))
 
     // 5
@@ -76,7 +76,7 @@ func initializeItemData() -> [Item] {
     itemsList.append(Item(name: "Yogurt Stop", number: 21, item: "Red Velvet Froyo", visited: false, coords: ["34.085861,-118.383084"]))
     
     // 22
-    itemsList.append(Item(name: "Street of LA", number: 22, item: "Bacon Wrapped Street Dog", visited: false, coords: ["34.0522342,-118.2436849"]))
+    itemsList.append(Item(name: "Streets of LA", number: 22, item: "Bacon Wrapped Street Dog", visited: false, coords: ["34.0522342,-118.2436849"]))
     
     // 23
     itemsList.append(Item(name: "Cacao Mexicatessen", number: 23, item: "Mexican Hot Chocolate", visited: false, coords: ["34.1392684,-118.200662"]))

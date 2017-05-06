@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Los Angeles-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="LAMagazineLocationMapper" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Z2R-HF-ah0">
+                    <navigationItem key="navigationItem" title="Los Angeles" id="Z2R-HF-ah0">
                         <barButtonItem key="rightBarButtonItem" title="Items" id="5AI-ch-dzO">
                             <connections>
-                                <segue destination="05K-GV-0Gt" kind="show" id="lXc-LK-ctm"/>
+                                <segue destination="05K-GV-0Gt" kind="show" identifier="BackToMaps" id="lXc-LK-ctm"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -50,7 +50,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5UU-B8-Ymj">
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5UU-B8-Ymj">
                                             <rect key="frame" x="8" y="24" width="254" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <accessibility key="accessibilityConfiguration">

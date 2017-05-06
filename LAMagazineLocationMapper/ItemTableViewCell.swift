@@ -41,12 +41,15 @@ class ItemTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
         // Add a gesture recognizer to the UILabel location label
         // following: http://stackoverflow.com/questions/37871206/how-can-i-add-a-uitapgesturerecognizer-to-a-uilabel-inside-a-table-view-cell-sw
         let tapLabel: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedLocationLabel))
         tapLabel.delegate = self
         locationLabel.addGestureRecognizer(tapLabel)
         
+        // Add a picture to the background of locationLabel
+        locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "PineBoard")!)
     }
     
     //MARK: function that does stuff when the location label is tapped

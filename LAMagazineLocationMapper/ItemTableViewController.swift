@@ -10,7 +10,13 @@ import UIKit
 import os.log
 
 protocol centerCameraHereDelegate {
-    func centerHere(_ location: Int)
+    
+    var centerOnLocation: Bool { get set }
+    // a flag that is true when the map should center on a location rather than the user
+    // default value should be set to false to center on the user at first load
+    
+    func centerHere(for item: Int)
+    // centerHere is a method that takes an item number and returns the nearest location with that item
 }
 
 class ItemTableViewController: UITableViewController {
@@ -19,6 +25,7 @@ class ItemTableViewController: UITableViewController {
     
     var items = [Item]()
     @IBOutlet var theTableView: UITableView!
+    var centerCameraDelegate: centerCameraHereDelegate? = nil
     
     //MARK: Override functions
     
@@ -39,6 +46,14 @@ class ItemTableViewController: UITableViewController {
         saveItems()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if (centerCameraDelegate != nil) {
+            centerCameraDelegate?.centerOnLocation = false
+            // set the centerOnLocation variable to false, so that the map view centers on the user
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,7 +71,6 @@ class ItemTableViewController: UITableViewController {
         return items.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         // Table view cells are reused and should be dequeued using a cell identifier.
@@ -119,14 +133,17 @@ class ItemTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        // Get the new view controller using segue.destination.
+        print("Moving views!")
+        if segue.identifier == "BackToMaps" {
+            let destVC:MapViewController = segue.destination as! MapViewController
+            destVC.centerOnLocation = false
+            print("Reseting centerOnLocation to false.")
+        }
+        
     }
     */
-    
-    //MARK: Actions for Tapping the labels
-    
-    
+ 
     //MARK: Private Methods
     
     // helper function to add some data to work with while building this app
@@ -172,10 +189,11 @@ class ItemTableViewController: UITableViewController {
     private func loadItems() -> [Item]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Item.ArchiveURL.path) as? [Item]
     }
+
     
 }
 
-// MARK: Extensions - used so the main class doesn't have a ton of conformation items
+// MARK: Extensions - used so the main class doesn't have a ton of adopt protocols up top
 extension ItemTableViewController: ButtonDelegate {
     // See http://stackoverflow.com/questions/39566065/uiswitch-in-accessory-view-of-a-tableviewcell-passing-a-parameter-with-the-sele
     
@@ -196,7 +214,10 @@ extension ItemTableViewController: ButtonDelegate {
     
     func didTapLocationLabel(for cell: ItemTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
-            print("Tapped cell number \(indexPath.row)")
+            if let cameraDelegate = centerCameraDelegate {
+                cameraDelegate.centerHere(for: indexPath.row)
+                self.navigationController!.popViewController(animated: true)
+            }
             
         }
         
