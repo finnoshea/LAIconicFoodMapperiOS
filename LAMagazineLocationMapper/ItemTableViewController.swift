@@ -35,8 +35,7 @@ class ItemTableViewController: UITableViewController {
         theTableView.dataSource = self
         
         // use a helper function to load the map locations
-        // safeLoadItems()
-        items = initializeItemData()
+        safeLoadItems()
         
         // set the nav bar title to the user's number of items had out of 100
         navigationItem.title = "\(items.map{$0.visited}.filter{$0}.count) / 100"
@@ -50,7 +49,7 @@ class ItemTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         if (centerCameraDelegate != nil) {
             centerCameraDelegate?.centerOnLocation = false
-            // set the centerOnLocation variable to false, so that the map view centers on the user
+            // set the centerOnLocation variable to false, so that the map view centers on the user  by default
         }
         
     }
@@ -73,79 +72,42 @@ class ItemTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "ItemTableViewCell"
-        // define the cell to be of the type defined in cellIdentifier
-        // downcast the cell (from superclass UITableViewCell to subclass ItemTableViewCell) safely
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ItemTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
-        }
         
         // Fetches the appropriate location for the data source layout.
         let item = items[indexPath.row]
         
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        // downcast the cell from superclass UITableViewCell to subclass ItemTableViewCell safely
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as? ItemTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
+        }
+            
         cell.locationLabel.text = item.name
         cell.numberLabel.text = String(item.number)
         cell.visitSwitch.isOn = item.visited
         cell.itemLabel.text = parseItemName(item.item)
         cell.isMobile = item.isMobile
+        cell.disableMarkers = item.disableMarkers
         cell.delegate = self
         
-        return cell
-    }
-
- 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        print("Moving views!")
-        if segue.identifier == "BackToMaps" {
-            let destVC:MapViewController = segue.destination as! MapViewController
-            destVC.centerOnLocation = false
-            print("Reseting centerOnLocation to false.")
+        
+        if cell.isMobile {  // mobile eateries have no markers and cannot be shown on the map
+            cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "FoodTruck")!)
+        } else {
+            cell.locationLabel.backgroundColor = nil
         }
         
+        if (cell.disableMarkers && !cell.isMobile) { // only stationary eateries can be disabled
+            cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "CrossOut")!)
+        } else {
+            if !cell.isMobile{
+            cell.locationLabel.backgroundColor = nil
+            }
+        }
+        
+        return cell
+
     }
-    */
  
     //MARK: Private Methods
     
@@ -160,17 +122,17 @@ class ItemTableViewController: UITableViewController {
         // load the items from memory, if that fails, use the sample items
         if let savedItems = loadItems() {
             items += savedItems
-            os_log("Items successfully loaded.", log: OSLog.default, type: .debug)
+            //os_log("Items successfully loaded.", log: OSLog.default, type: .debug)
             if items.count < 100 {
                 items.removeAll()
                 items = initializeItemData()
-                os_log("Saved list is incomplete, loading initial data.", log: OSLog.default, type: .debug)
+                //os_log("Saved list is incomplete, loading initial data.", log: OSLog.default, type: .debug)
             }
         }
         else {
             // Load the all the items on first load.
             items = initializeItemData()
-            os_log("Items loaded from internal memory.", log: OSLog.default, type: .debug)
+            //os_log("Items loaded from internal memory.", log: OSLog.default, type: .debug)
         }
     }
 
@@ -180,13 +142,16 @@ class ItemTableViewController: UITableViewController {
     }
     
     private func saveItems() {
+        _ = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ArchiveURL.path)
+        
+        /*
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ArchiveURL.path)
-
         if isSuccessfulSave {
             os_log("Items successfully saved.", log: OSLog.default, type: .debug)
         } else {
             os_log("Failed to save items.", log: OSLog.default, type: .error)
         }
+         */
     }
     
     private func loadItems() -> [Item]? {
@@ -205,27 +170,46 @@ extension ItemTableViewController: ButtonDelegate {
             items[indexPath.row].visited = value
             // set the nav bar title to the user's number of items had out of 100
             navigationItem.title = "\(items.map{$0.visited}.filter{$0}.count) / 100"
-            
+            /*
             if value {
                 os_log("Visit switch set to ON.", log: OSLog.default, type: .error)
             } else {
                 os_log("Visit switch set to OFF.", log: OSLog.default, type: .error)
             }
+             */
         }
-        
     }
     
     func didTapLocationLabel(for cell: ItemTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
-            if let cameraDelegate = centerCameraDelegate {
-                cameraDelegate.centerHere(for: indexPath.row)
-                self.navigationController!.popViewController(animated: true)
+            if !items[indexPath.row].isMobile { // only go through with tap function if the eatery is NOT mobile
+                if !items[indexPath.row].disableMarkers { // check that markers are enabled ... xor would be nice here
+                    if let cameraDelegate = centerCameraDelegate {
+                        cameraDelegate.centerHere(for: indexPath.row)
+                        self.navigationController!.popViewController(animated: true)
+                    }
+                }
             }
-            
         }
-        
     }
     
+    func didSwipeLocationLabelRight(for cell: ItemTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            // flip the disableMarkers flag when the location label is swiped
+            items[indexPath.row].disableMarkers = true
+            // set the background image to the CrossOut immediately
+            cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "CrossOut")!)
+        }
+    }
+    
+    func didSwipeLocationLabelLeft(for cell: ItemTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            // flip the disableMarkers flag when the location label is swiped
+            items[indexPath.row].disableMarkers = false
+            // set the background image to nil immediately
+            cell.locationLabel.backgroundColor = nil
+        }
+    }
 }
 
 

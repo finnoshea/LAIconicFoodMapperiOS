@@ -22,6 +22,7 @@ class Item: NSObject, NSCoding {
     var visited: Bool
     var coords: [String]?
     var isMobile: Bool
+    var disableMarkers: Bool
     
     //MARK: Archiving Paths
     
@@ -39,6 +40,7 @@ class Item: NSObject, NSCoding {
         static let visited = "visited"
         static let coords = "coords"
         static let isMobile = "isMobile"
+        static let disableMarkers = "disableMarkers"
     }
     
     /* - No longer useful
@@ -50,7 +52,7 @@ class Item: NSObject, NSCoding {
     
     //MARK: Initialization
     
-    init(name: String, number: Int, item: String, visited: Bool, coords: [String], isMobile: Bool) {
+    init(name: String, number: Int, item: String, visited: Bool, coords: [String], isMobile: Bool, disableMarkers: Bool) {
        
         // Initialize stored properties
         self.name = name
@@ -59,6 +61,7 @@ class Item: NSObject, NSCoding {
         self.visited = visited
         self.coords = coords
         self.isMobile = isMobile
+        self.disableMarkers = disableMarkers
     }
     
     //MARK: NSCoding
@@ -70,6 +73,7 @@ class Item: NSObject, NSCoding {
         aCoder.encode(self.visited, forKey: PropertyKey.visited)
         aCoder.encode(self.coords, forKey: PropertyKey.coords)
         aCoder.encode(self.isMobile, forKey: PropertyKey.isMobile)
+        aCoder.encode(self.disableMarkers, forKey: PropertyKey.disableMarkers)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -92,9 +96,10 @@ class Item: NSObject, NSCoding {
         let number = aDecoder.decodeInteger(forKey: PropertyKey.number)
         let visited = aDecoder.decodeBool(forKey: PropertyKey.visited)
         let isMobile = aDecoder.decodeBool(forKey: PropertyKey.isMobile)
+        let disableMarkers = aDecoder.decodeBool(forKey: PropertyKey.disableMarkers)
         
         // must call a designated initializer
-        self.init(name: name, number: number, item: item, visited: visited, coords: coords, isMobile: isMobile)
+        self.init(name: name, number: number, item: item, visited: visited, coords: coords, isMobile: isMobile, disableMarkers: disableMarkers)
     }
 }
 

@@ -4,9 +4,7 @@
 //
 //  Created by Finn on 4/13/17.
 //  Copyright © 2017 Finn. All rights reserved.
-//  For info on centering the map on the user, see: http://stackoverflow.com/questions/40054883/current-location-in-not-working-in-google-map/40058423#40058423
-//  Or better yet, here: http://stackoverflow.com/questions/39430399/google-maps-ios-mylocation
-//  Or maybe here: http://stackoverflow.com/questions/26192480/cannot-get-my-location-to-show-up-in-google-maps-in-ios-8
+//  For info on centering the map on the user, see: http://www.seemuapps.com/swift-google-maps-sdk-integration-with-current-location-and-markers
 
 import UIKit
 import GoogleMaps
@@ -25,6 +23,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
                                                                   longitude: -118.3,
                                                                   zoom: 11)
     
+    var selectedItemLocation:Int?
+    // when the user selects an eatery to center on, this stores the item number so that all the eateries with that item can have their pin color changed
     // required to conform to the centerCameraHereDelegate protocol
     // default value is default to center on the user
     var centerOnLocation = false
@@ -40,8 +40,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
         super.viewWillAppear(animated)
     
         // load the items list from memory or, failing that, the default items
-        //safeLoadItems()
-        items = initializeItemData()
+        safeLoadItems()
+        
+        var accumlateTrues: Int = 0
+        for i in 0..<100 {
+            if items[i].disableMarkers {
+                accumlateTrues += 1
+            }
+        }
         
         // create the map view property
         mapView = GMSMapView(frame: .zero)
@@ -53,8 +59,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
         // put the markers on the map
         mapMarkers(for: mapView)
         
-        
-        print("The centerOnLocation boolean is \(centerOnLocation)")
         if centerOnLocation {
             // center on the desired location
             mapView.camera = startCamera // update the camera position to that set by the centerHere method
@@ -95,6 +99,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
     
     func centerHere(for item: Int) {
         
+        selectedItemLocation = item  // save the number of the selected item's location
         let theItem = items[item]
         var distance: Double = 100 // pick a huge distance to start
         let userLocation = locationManager.location // find the user's last known location
@@ -178,6 +183,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
         // fill the map with markers by going through the list of items
         var counter = 0
         for ii in 0..<items.count {
+            if items[ii].disableMarkers {
+                continue  // skip this marker maker if the disableMarkers flag is true
+            }
             // check to see if the title already exists in the array of markers
             if let theIndexes: [Int] = containsTitle(for: markers, name: items[ii].name) {
                 // if so, add the item number and name to the snippet for those items
@@ -185,14 +193,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
                     let oldSnippet = markers[jj].snippet!
                     markers[jj].snippet = oldSnippet + "\n" + "\(items[ii].number): \(items[ii].item)"
                     if !items[ii].visited {
-                        // if the new item hasn't been tried (visited = false), set the pin red and the flag false
+                        // if the new item hasn't been tried (visited = false), set the pin red
                         markers[jj].icon = GMSMarker.markerImage(with: .red)
                     }
+                    
                 }
             } else {  // add the items to the GMSMarker list
                 // testing in playground tells me the following line should fail when the
                 // items[ii-1].coords.count is 1, but it appears to be working
-                if (items[ii].coords != nil && !items[ii].isMobile) { // check if the items coordinates exist
+                if (items[ii].coords != nil && !items[ii].isMobile) { // check if the item's coordinates exist
                     let theItem = items[ii]
                     for jj in 0..<theItem.coords!.count {
                         let tempMarker = GMSMarker()
@@ -204,20 +213,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
                         tempMarker.snippet = "\(theItem.number): \(theItem.item)"
                         
                         if theItem.visited {
-                            // if the place has been visited, change the marker to green
+                            // if the place has been visited, set the marker to green
                             tempMarker.icon = GMSMarker.markerImage(with: .green)
                         } else {
                             // otherwise, set the marker to red
                             tempMarker.icon = GMSMarker.markerImage(with: .red)
                         }
+                        
                         markers.append(tempMarker) // append the marker to the variable
                         markers[counter].map = mapView // add the current marker to the map
                         counter += 1
                     }
                 }
-                
             }
         }
+        
+        // find the markers that are for locations that the user selected
+        if selectedItemLocation != nil {
+            let matches = containsTitle(for: markers, name: items[selectedItemLocation!].name)
+            for kk in matches! {  // force unwrap is ok because there must be a selected item
+                markers[kk].icon = GMSMarker.markerImage(with: .magenta)
+            }
+        }
+        
     }
 
     private func containsTitle(for theMarkers: [GMSMarker], name query: String) -> [Int]? {
