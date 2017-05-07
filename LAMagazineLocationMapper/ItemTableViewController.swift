@@ -35,7 +35,8 @@ class ItemTableViewController: UITableViewController {
         theTableView.dataSource = self
         
         // use a helper function to load the map locations
-        safeLoadItems()
+        // safeLoadItems()
+        items = initializeItemData()
         
         // set the nav bar title to the user's number of items had out of 100
         navigationItem.title = "\(items.map{$0.visited}.filter{$0}.count) / 100"
@@ -88,10 +89,12 @@ class ItemTableViewController: UITableViewController {
         cell.numberLabel.text = String(item.number)
         cell.visitSwitch.isOn = item.visited
         cell.itemLabel.text = parseItemName(item.item)
+        cell.isMobile = item.isMobile
         cell.delegate = self
         
         return cell
     }
+
  
     /*
     // Override to support conditional editing of the table view.

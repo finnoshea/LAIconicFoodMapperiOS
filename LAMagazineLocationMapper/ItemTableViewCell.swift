@@ -25,13 +25,12 @@ class ItemTableViewCell: UITableViewCell {
     //MARK: Properties
     
     weak var delegate: ButtonDelegate? = nil
+    var isMobile: Bool = false
     
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var visitSwitch: UISwitch!
-    
-    
     
     //MARK: Actions
     @IBAction func visitSwitchTapped(_ sender: UISwitch) {
@@ -40,16 +39,17 @@ class ItemTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Initialization code 
         
-        // Add a gesture recognizer to the UILabel location label
-        // following: http://stackoverflow.com/questions/37871206/how-can-i-add-a-uitapgesturerecognizer-to-a-uilabel-inside-a-table-view-cell-sw
-        let tapLabel: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedLocationLabel))
-        tapLabel.delegate = self
-        locationLabel.addGestureRecognizer(tapLabel)
-        
-        // Add a picture to the background of locationLabel
-        locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "PineBoard")!)
+        if isMobile {  // if the eatery is mobile, add an image behind locationLabel
+           locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "PineBoard")!)
+        } else {  // if it is brick-and-mortor, allow it to be tapped and shown on the map
+            // Add a gesture recognizer to the UILabel location label
+            // following: http://stackoverflow.com/questions/37871206/how-can-i-add-a-uitapgesturerecognizer-to-a-uilabel-inside-a-table-view-cell-sw
+            let tapLabel: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedLocationLabel))
+            tapLabel.delegate = self
+            locationLabel.addGestureRecognizer(tapLabel)
+        }
     }
     
     //MARK: function that does stuff when the location label is tapped

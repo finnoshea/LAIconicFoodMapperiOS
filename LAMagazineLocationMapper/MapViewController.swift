@@ -40,7 +40,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
         super.viewWillAppear(animated)
     
         // load the items list from memory or, failing that, the default items
-        safeLoadItems()
+        //safeLoadItems()
+        items = initializeItemData()
         
         // create the map view property
         mapView = GMSMapView(frame: .zero)
@@ -93,27 +94,30 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
     //MARK: Center camera on tapped location method
     
     func centerHere(for item: Int) {
-        print("Tapped cell number \(item) at location \(items[item].coords[0])")
+        
         let theItem = items[item]
         var distance: Double = 100 // pick a huge distance to start
         let userLocation = locationManager.location // find the user's last known location
         var closestLocation: Int? = nil
         
-        for jj in 0..<theItem.coords.count {
-            let tempCoords = theItem.coords[jj].components(separatedBy: ",")
-            let tempDistance = sqrt(pow(Double(tempCoords[0])! - userLocation!.coordinate.latitude,2) + pow(Double(tempCoords[1])! - userLocation!.coordinate.longitude,2))
-            if tempDistance <= distance {
-                distance = tempDistance
-                closestLocation = jj
+        // only allowed to center on non-mobile locations with coordinates
+        if (theItem.coords != nil && !theItem.isMobile) {
+            for jj in 0..<theItem.coords!.count {
+                let tempCoords = theItem.coords![jj].components(separatedBy: ",")
+                let tempDistance = sqrt(pow(Double(tempCoords[0])! - userLocation!.coordinate.latitude,2) + pow(Double(tempCoords[1])! - userLocation!.coordinate.longitude,2))
+                if tempDistance <= distance {
+                    distance = tempDistance
+                    closestLocation = jj
+                }
             }
+            
+            if (closestLocation != nil) { // check that closest location is not nil
+                let coordinates = items[item].coords![closestLocation!].components(separatedBy: ",")
+                startCamera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: Double(coordinates[0])!, longitude: Double(coordinates[1])!), zoom: 16)
+            }
+            
+            self.centerOnLocation = true
         }
-        
-        if (closestLocation != nil) { // check that closest location is not nil
-            let coordinates = items[item].coords[closestLocation!].components(separatedBy: ",")
-            startCamera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: Double(coordinates[0])!, longitude: Double(coordinates[1])!), zoom: 16)
-        }
-        
-        self.centerOnLocation = true
     }
     
     /*
@@ -188,26 +192,30 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
             } else {  // add the items to the GMSMarker list
                 // testing in playground tells me the following line should fail when the
                 // items[ii-1].coords.count is 1, but it appears to be working
-                for jj in 0..<items[ii].coords.count {
-                    let tempMarker = GMSMarker()
-                    let coordinates = items[ii].coords[jj].components(separatedBy: ",")
-                    tempMarker.position = CLLocationCoordinate2D(latitude: Double(coordinates[0])!, longitude: Double(coordinates[1])!)
-                    // title the marker with the item number and the name
-                    tempMarker.title = items[ii].name
-                    // add the name of the item to the marker when tapped
-                    tempMarker.snippet = "\(items[ii].number): \(items[ii].item)"
-                    
-                    if items[ii].visited {
-                        // if the place has been visited, change the marker to green
-                        tempMarker.icon = GMSMarker.markerImage(with: .green)
-                    } else {
-                        // otherwise, set the marker to red
-                        tempMarker.icon = GMSMarker.markerImage(with: .red)
+                if (items[ii].coords != nil && !items[ii].isMobile) { // check if the items coordinates exist
+                    let theItem = items[ii]
+                    for jj in 0..<theItem.coords!.count {
+                        let tempMarker = GMSMarker()
+                        let coordinates = theItem.coords![jj].components(separatedBy: ",")
+                        tempMarker.position = CLLocationCoordinate2D(latitude: Double(coordinates[0])!, longitude: Double(coordinates[1])!)
+                        // title the marker with the item number and the name
+                        tempMarker.title = theItem.name
+                        // add the name of the item to the marker when tapped
+                        tempMarker.snippet = "\(theItem.number): \(theItem.item)"
+                        
+                        if theItem.visited {
+                            // if the place has been visited, change the marker to green
+                            tempMarker.icon = GMSMarker.markerImage(with: .green)
+                        } else {
+                            // otherwise, set the marker to red
+                            tempMarker.icon = GMSMarker.markerImage(with: .red)
+                        }
+                        markers.append(tempMarker) // append the marker to the variable
+                        markers[counter].map = mapView // add the current marker to the map
+                        counter += 1
                     }
-                    markers.append(tempMarker) // append the marker to the variable
-                    markers[counter].map = mapView // add the current marker to the map
-                    counter += 1
                 }
+                
             }
         }
     }
