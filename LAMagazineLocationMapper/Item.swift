@@ -23,6 +23,7 @@ class Item: NSObject, NSCoding {
     var coords: [String]?
     var isMobile: Bool
     var disableMarkers: Bool
+    var chain: Bool
     
     //MARK: Archiving Paths
     
@@ -41,6 +42,7 @@ class Item: NSObject, NSCoding {
         static let coords = "coords"
         static let isMobile = "isMobile"
         static let disableMarkers = "disableMarkers"
+        static let chain = "chain"
     }
     
     /* - No longer useful
@@ -52,7 +54,7 @@ class Item: NSObject, NSCoding {
     
     //MARK: Initialization
     
-    init(name: String, number: Int, item: String, visited: Bool, coords: [String], isMobile: Bool, disableMarkers: Bool) {
+    init(name: String, number: Int, item: String, visited: Bool, coords: [String], isMobile: Bool, disableMarkers: Bool, chain: Bool) {
        
         // Initialize stored properties
         self.name = name
@@ -62,6 +64,7 @@ class Item: NSObject, NSCoding {
         self.coords = coords
         self.isMobile = isMobile
         self.disableMarkers = disableMarkers
+        self.chain = chain
     }
     
     //MARK: NSCoding
@@ -74,6 +77,7 @@ class Item: NSObject, NSCoding {
         aCoder.encode(self.coords, forKey: PropertyKey.coords)
         aCoder.encode(self.isMobile, forKey: PropertyKey.isMobile)
         aCoder.encode(self.disableMarkers, forKey: PropertyKey.disableMarkers)
+        aCoder.encode(self.chain, forKey: PropertyKey.chain)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -97,9 +101,10 @@ class Item: NSObject, NSCoding {
         let visited = aDecoder.decodeBool(forKey: PropertyKey.visited)
         let isMobile = aDecoder.decodeBool(forKey: PropertyKey.isMobile)
         let disableMarkers = aDecoder.decodeBool(forKey: PropertyKey.disableMarkers)
+        let chain = aDecoder.decodeBool(forKey: PropertyKey.chain)
         
         // must call a designated initializer
-        self.init(name: name, number: number, item: item, visited: visited, coords: coords, isMobile: isMobile, disableMarkers: disableMarkers)
+        self.init(name: name, number: number, item: item, visited: visited, coords: coords, isMobile: isMobile, disableMarkers: disableMarkers, chain: chain)
     }
 }
 

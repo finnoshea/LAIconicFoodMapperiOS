@@ -35,7 +35,8 @@ class ItemTableViewController: UITableViewController {
         theTableView.dataSource = self
         
         // use a helper function to load the map locations
-        safeLoadItems()
+        //safeLoadItems()
+        items = initializeItemData()
         
         // set the nav bar title to the user's number of items had out of 100
         navigationItem.title = "\(items.map{$0.visited}.filter{$0}.count) / 100"
@@ -88,21 +89,22 @@ class ItemTableViewController: UITableViewController {
         cell.itemLabel.text = parseItemName(item.item)
         cell.isMobile = item.isMobile
         cell.disableMarkers = item.disableMarkers
+        cell.chain = item.chain
         cell.delegate = self
         
         
-        if cell.isMobile {  // mobile eateries have no markers and cannot be shown on the map
-            cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "FoodTruck")!)
-        } else {
-            cell.locationLabel.backgroundColor = nil
-        }
-        
-        if (cell.disableMarkers && !cell.isMobile) { // only stationary eateries can be disabled
-            cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "CrossOut")!)
-        } else {
-            if !cell.isMobile{
-            cell.locationLabel.backgroundColor = nil
+        if cell.isMobile || cell.chain || cell.disableMarkers {
+            if cell.isMobile { // mobile eateries are shown with a food truck
+                cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "FoodTruck")!)
             }
+            if cell.chain {
+                cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "Chain")!)
+            }
+            if cell.disableMarkers {
+                cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "CrossOut")!)
+            }
+        } else {
+            cell.locationLabel.backgroundColor = nil
         }
         
         return cell
@@ -184,9 +186,11 @@ extension ItemTableViewController: ButtonDelegate {
         if let indexPath = tableView.indexPath(for: cell) {
             if !items[indexPath.row].isMobile { // only go through with tap function if the eatery is NOT mobile
                 if !items[indexPath.row].disableMarkers { // check that markers are enabled ... xor would be nice here
-                    if let cameraDelegate = centerCameraDelegate {
-                        cameraDelegate.centerHere(for: indexPath.row)
-                        self.navigationController!.popViewController(animated: true)
+                    if !items[indexPath.row].chain { // check that the location is not a chain ... again xor
+                        if let cameraDelegate = centerCameraDelegate {
+                            cameraDelegate.centerHere(for: indexPath.row)
+                            self.navigationController!.popViewController(animated: true)
+                        }
                     }
                 }
             }
@@ -195,19 +199,28 @@ extension ItemTableViewController: ButtonDelegate {
     
     func didSwipeLocationLabelRight(for cell: ItemTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
-            // flip the disableMarkers flag when the location label is swiped
-            items[indexPath.row].disableMarkers = true
-            // set the background image to the CrossOut immediately
-            cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "CrossOut")!)
+            if items[indexPath.row].isMobile || items[indexPath.row].chain {
+                // do nothing, we don't want swiping affecting these types
+            } else {
+                // flip the disableMarkers flag when the location label is swiped
+                items[indexPath.row].disableMarkers = true
+                // set the background image to the CrossOut immediately
+                cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "CrossOut")!)
+            }
+            
         }
     }
     
     func didSwipeLocationLabelLeft(for cell: ItemTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
-            // flip the disableMarkers flag when the location label is swiped
-            items[indexPath.row].disableMarkers = false
-            // set the background image to nil immediately
-            cell.locationLabel.backgroundColor = nil
+            if items[indexPath.row].isMobile || items[indexPath.row].chain {
+                // do nothing, we don't want swiping affecting these types
+            } else {
+                // flip the disableMarkers flag when the location label is swiped
+                items[indexPath.row].disableMarkers = false
+                // set the background image to nil immediately
+                cell.locationLabel.backgroundColor = nil
+            }
         }
     }
 }

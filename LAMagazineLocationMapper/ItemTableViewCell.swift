@@ -33,6 +33,7 @@ class ItemTableViewCell: UITableViewCell {
     weak var delegate: ButtonDelegate? = nil
     var isMobile: Bool = false
     var disableMarkers = false
+    var chain = false
     
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var itemLabel: UILabel!

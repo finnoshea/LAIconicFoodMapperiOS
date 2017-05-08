@@ -183,8 +183,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
         // fill the map with markers by going through the list of items
         var counter = 0
         for ii in 0..<items.count {
-            if items[ii].disableMarkers {
-                continue  // skip this marker maker if the disableMarkers flag is true
+            if items[ii].disableMarkers || items[ii].chain {
+                continue  // skip this marker maker if the either of the disableMarkers or chain flags is true
             }
             // check to see if the title already exists in the array of markers
             if let theIndexes: [Int] = containsTitle(for: markers, name: items[ii].name) {

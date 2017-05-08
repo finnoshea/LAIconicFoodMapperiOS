@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
             keys = NSDictionary(contentsOfFile: path)
-            print("The key is \(keys!.value(forKey: "googleMapsAPI") ?? ""), right?")
+            //print("The key is \(keys!.value(forKey: "googleMapsAPI") ?? ""), right?")
             GMSServices.provideAPIKey(keys!.value(forKey: "googleMapsAPI") as! String)
         } else {
             print("Failed to find the Keys.plist file.")
