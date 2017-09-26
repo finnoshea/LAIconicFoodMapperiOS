@@ -214,7 +214,7 @@ func initializeItemData() -> [Item] {
     itemsList.append(Item(name: "Crossroads Kitchen", number: 67, item: "Artichoke Oysters", visited: false, coords: ["34.083527,-118.370157"], isMobile: false, disableMarkers: false, chain: false))
     
     // 68 x
-    itemsList.append(Item(name: "Valerie Confections", number: 68, item: "Blum's Coffee Crunch Cake", visited: false, coords: ["34.0733807,-118.2860371"], isMobile: false, disableMarkers: false, chain: false))
+    itemsList.append(Item(name: "Valerie Confections", number: 68, item: "Blum's Coffee Crunch Cake", visited: false, coords: ["34.0733807,-118.2860371","34.0507886,-118.2491745"], isMobile: false, disableMarkers: false, chain: false))
     
     // 69
     itemsList.append(Item(name: "Original Pancake House", number: 69, item: "Dutch Baby Pancake", visited: false, coords: ["33.8179892,-118.381627","33.6740935,-117.9528023","33.838927,-117.89813","33.940221,-117.981051"], isMobile: false, disableMarkers: false, chain: true))
