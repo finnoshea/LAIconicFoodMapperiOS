@@ -191,6 +191,7 @@
 				TargetAttributes = {
 					B60556A11EA06A1D002A8148 = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 68SR4KP38B;
 						ProvisioningStyle = Automatic;
 					};
 					B60556B51EA06A1D002A8148 = {
@@ -440,10 +441,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 68SR4KP38B;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = LAMagazineLocationMapper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.LAMagazineLocationMapper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finns.LAMagazineLocationMapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -455,10 +458,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 68SR4KP38B;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = LAMagazineLocationMapper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.LAMagazineLocationMapper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finns.LAMagazineLocationMapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

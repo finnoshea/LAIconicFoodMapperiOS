@@ -35,8 +35,7 @@ class ItemTableViewController: UITableViewController {
         theTableView.dataSource = self
         
         // use a helper function to load the map locations
-        //safeLoadItems()
-        items = initializeItemData()
+        safeLoadItems()
         
         // set the nav bar title to the user's number of items had out of 100
         navigationItem.title = "\(items.map{$0.visited}.filter{$0}.count) / 100"
@@ -101,10 +100,12 @@ class ItemTableViewController: UITableViewController {
                 cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "Chain")!)
             }
             if cell.disableMarkers {
-                cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "CrossOut")!)
+                //cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "CrossOut")!)
+                cell.locationLabel.textColor = UIColor.red
             }
         } else {
             cell.locationLabel.backgroundColor = nil
+            cell.locationLabel.textColor = UIColor.black
         }
         
         return cell
@@ -205,7 +206,9 @@ extension ItemTableViewController: ButtonDelegate {
                 // flip the disableMarkers flag when the location label is swiped
                 items[indexPath.row].disableMarkers = true
                 // set the background image to the CrossOut immediately
-                cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "CrossOut")!)
+                //cell.locationLabel.backgroundColor = UIColor(patternImage: UIImage(named: "CrossOut")!)
+                // better yet, change the text color to red
+                cell.locationLabel.textColor = UIColor.red
             }
             
         }
@@ -219,7 +222,9 @@ extension ItemTableViewController: ButtonDelegate {
                 // flip the disableMarkers flag when the location label is swiped
                 items[indexPath.row].disableMarkers = false
                 // set the background image to nil immediately
-                cell.locationLabel.backgroundColor = nil
+                //cell.locationLabel.backgroundColor = nil
+                // set the text color to black
+                cell.locationLabel.textColor = UIColor.black
             }
         }
     }

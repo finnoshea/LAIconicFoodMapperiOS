@@ -42,12 +42,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
         // load the items list from memory or, failing that, the default items
         safeLoadItems()
         
+        /*
         var accumlateTrues: Int = 0
         for i in 0..<100 {
             if items[i].disableMarkers {
                 accumlateTrues += 1
             }
         }
+         */
         
         // create the map view property
         mapView = GMSMapView(frame: .zero)
@@ -145,6 +147,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, centerCame
         // set this View Controller as the delegate for the camera centering prototcol
         let destVC:ItemTableViewController = segue.destination as! ItemTableViewController
         destVC.centerCameraDelegate = self
+        // set the selectedItemLocation to nil.
+        // otherwise the last selected location remains a purple pin when the map is returned to via the "< Map" button.
+        self.selectedItemLocation = nil
     }
     
     // MARK: Private Methods
